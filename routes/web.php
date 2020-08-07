@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'WelcomeController@index');
 
 Auth::routes(['verify' => true]);
+Route::resource('user', 'UserController', ['only' => ['show', 'update', 'edit']]);
