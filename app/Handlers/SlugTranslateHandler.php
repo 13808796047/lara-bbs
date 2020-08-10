@@ -2,6 +2,7 @@
 namespace App\Handlers;
 
 use GuzzleHttp\Client;
+use Overtrue\Pinyin\Pinyin;
 
 class SlugTranslateHandler
 {
