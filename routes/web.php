@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'TopicsController@index')->name('root');
 
 Auth::routes(['verify' => true]);
 Route::resource('user', 'UserController', ['only' => ['show', 'update', 'edit']]);
