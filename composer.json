@@ -17,6 +17,7 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^7.22.2",
         "laravel/horizon": "~4.3",
+        "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
         "mews/captcha": "~3.0",
         "mews/purifier": "~3.0",
