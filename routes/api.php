@@ -44,6 +44,9 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function () {
         // 某个用户的详情
         Route::get('users/{user}', 'UsersController@show')
             ->name('user.show');
+        // 分类列表
+        Route::get('categories', 'CategoriesController@index')
+            ->name('categories.index');
         // 登录后可以访问的接口
         Route::middleware('auth:api')->group(function () {
             // 当前登录用户信息
