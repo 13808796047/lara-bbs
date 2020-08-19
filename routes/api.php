@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function () {
-    Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function () {
+Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function() {
+    Route::middleware('throttle:' . config('api.rate_limits.sign'))->group(function() {
         // 图片验证码
         Route::post('captchas', 'CaptchasController@store')
             ->name('captchas.store');
@@ -39,7 +39,7 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function () {
             ->name('authorizations.destroy');
 
     });
-    Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function () {
+    Route::middleware('throttle:' . config('api.rate_limits.access'))->group(function() {
         // 游客可以访问的接口
         // 某个用户的详情
         Route::get('users/{user}', 'UsersController@show')
@@ -47,8 +47,11 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function () {
         // 分类列表
         Route::get('categories', 'CategoriesController@index')
             ->name('categories.index');
+        // 某个用户发布的话题
+        Route::get('users/{user}/topics', 'TopicsController@userIndex')
+            ->name('users.topics.index');
         // 登录后可以访问的接口
-        Route::middleware('auth:api')->group(function () {
+        Route::middleware('auth:api')->group(function() {
             // 当前登录用户信息
             Route::get('user', 'UsersController@me')->name('users.show');
             // 编辑登录用户信息
@@ -59,7 +62,7 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function () {
                 ->name('images.store');
             // 发布话题
             Route::resource('topics', 'TopicsController')->only([
-                'store', 'update', 'destroy',
+                'index', 'store', 'update', 'destroy',
             ]);
         });
     });
