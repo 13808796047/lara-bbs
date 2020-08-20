@@ -79,6 +79,9 @@ Route::prefix('v1')->namespace('Api')->name('api.v1.')->group(function () {
             // 资源推荐
             Route::get('links', 'LinksController@index')
                 ->name('links.index');
+            // 活跃用户
+            Route::get('actived/users', 'UsersController@activedIndex')
+                ->name('actived.users.index');
             // 通知列表
             Route::get('notifications', 'NotificationsController@index')
                 ->name('notifications.index');
